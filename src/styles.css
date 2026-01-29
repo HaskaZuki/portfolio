@@ -1,6 +1,4 @@
-   1. RESET & CORE VARIABLES
 :root {
-  
   
   --text-header: #ffffff;
   --text-main: #e8e8e8;
@@ -61,7 +59,6 @@ body {
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-   PREMIUM UTILITIES & ANIMATIONS
 .glass-card {
   background: rgba(255, 255, 255, 0.03);
   border: 1px solid var(--glass-border);
@@ -114,7 +111,7 @@ body {
    LAYOUT
 .dashboard-layout { display: flex; min-height: 100vh; }
 
-   2. HEADER
+   
 .main-header {
   position: fixed;
   top: 0;
@@ -172,8 +169,7 @@ body {
 
 .theme-divider { width: 1px; height: 15px; background: var(--glass-border); }
 
-   3. SIDEBAR NAVIGATION
-   3. SIDEBAR NAVIGATION
+   
 .sidebar {
   top: 0;
   width: var(--sidebar-width);
@@ -280,7 +276,7 @@ body {
   background: var(--bg-subtle);
 }
 
-   4. MAIN CONTENT AREA
+ 
 .main-content {
   min-height: 100vh;
   display: flex; flex-direction: column;
@@ -293,7 +289,6 @@ body {
   margin: 0 auto;
 }
 
-   5. PAGE WRAPPER & DOCS SCALING
 .page-wrapper {
   padding: 0;
   width: 100%;
@@ -416,8 +411,7 @@ th { text-align: left; padding: 1.2rem; color: var(--text-header); border-bottom
 td { padding: 1.2rem; color: var(--text-muted); border-bottom: 1px solid var(--glass-border); transition: background 0.2s; }
 tr:hover td { background: var(--bg-subtle); color: var(--text-main); }
 
-   5. HOME / HERO SECTION
-   5. HOME / HERO SECTION
+ 
 .hero-section {
   min-height: 70vh; position: relative;
 }
@@ -473,7 +467,7 @@ tr:hover td { background: var(--bg-subtle); color: var(--text-main); }
   50% { border-color: var(--accent-primary); }
 }
 
-   6. DOCS FOOTER & UTILS (SYMMETRICAL FIX)
+
 .docs-footer-container {
   margin-top: 5rem;
   border-top: 1px solid var(--glass-border);
@@ -563,7 +557,7 @@ tr:hover td { background: var(--bg-subtle); color: var(--text-main); }
   opacity: 0.6;
 }
 
-   7. UTILS & TABLE ALIGNMENT (NEW)
+ 
 .command-table {
   width: 100%;
   border-collapse: collapse;
@@ -591,7 +585,7 @@ tr:hover td { background: var(--bg-subtle); color: var(--text-main); }
 @keyframes fadeIn { from { opacity: 0; transform: translateY(-5px); } to { opacity: 1; transform: translateY(0); } }
 .fade-in { animation: fadeIn 0.4s ease forwards; }
 
-   8. GLOBAL FOOTER (NEW)
+  
 .global-footer {
   margin-top: 5rem;
   border-top: 1px solid var(--glass-border);
@@ -629,7 +623,7 @@ tr:hover td { background: var(--bg-subtle); color: var(--text-main); }
 .legal-links a { color: var(--text-muted); text-decoration: none; }
 .legal-links a:hover { color: var(--accent-primary); text-decoration: underline; }
 
-   9. ADVANCED LANGUAGE SELECTOR
+
 .language-selector {
   position: relative;
 }
@@ -745,7 +739,7 @@ tr:hover td { background: var(--bg-subtle); color: var(--text-main); }
   color: var(--accent-primary);
 }
 
-   11. DOCS LANDING PAGE
+
 .docs-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -979,7 +973,7 @@ tr:hover td { background: var(--bg-subtle); color: var(--text-main); }
   background: rgba(0, 0, 0, 0.04);
 }
 
-   12. RESPONSIVE DESIGN - MOBILE & TABLET
+
 
 @media (max-width: 900px) and (min-width: 601px) {
   .docs-grid {

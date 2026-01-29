@@ -10,10 +10,10 @@ const Home = ({ language = "en" }) => (
         <h1 className="main-headline">
           Engineering Logic.<br />
           Creative Software.<br />
-          <span className="typing-effect">Front End Developer.</span>
+          <span className="typing-effect">Developer.</span>
         </h1>
         <h2 className="sub-headline">
-          Mechanical Engineering Alumnus @ ITB building scalable backend systems, immersive game experiences, and data-driven solutions.
+          Mechanical Engineering Alumnus @ ITB building scalable frontend and backend systems, immersive game experiences, and data-driven solutions.
         </h2>
         <div className="cta-group">
           <Link to="/about" className="btn btn-primary">{t(language, "viewProjects")}</Link>
