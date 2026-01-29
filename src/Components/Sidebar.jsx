@@ -45,15 +45,32 @@ const Sidebar = ({ language = "en" }) => {
 
           {/* Docs Dropdown */}
           <li>
-            <div 
-              className={`nav-item ${location.pathname.startsWith("/docs") ? "active" : ""}`} 
-              onClick={() => setIsDocsOpen(!isDocsOpen)}
-              style={{ justifyContent: "space-between" }}
-            >
-              <div style={{ display: "flex", alignItems: "center", gap: "1rem" }}>
+            <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
+              <Link 
+                to="/docs" 
+                className={`nav-item ${location.pathname.startsWith("/docs") ? "active" : ""}`}
+                style={{ flex: 1, justifyContent: "flex-start" }}
+              >
                 <Icons.Book /> <span>{t(language, "docs")}</span>
-              </div>
-              {isDocsOpen ? <Icons.ChevronDown /> : <Icons.ChevronRight />}
+              </Link>
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setIsDocsOpen(!isDocsOpen);
+                }}
+                style={{
+                  background: 'none',
+                  border: 'none',
+                  color: 'inherit',
+                  cursor: 'pointer',
+                  padding: '0.5rem',
+                  display: 'flex',
+                  alignItems: 'center'
+                }}
+                aria-label="Toggle docs menu"
+              >
+                {isDocsOpen ? <Icons.ChevronDown /> : <Icons.ChevronRight />}
+              </button>
             </div>
 
             {isDocsOpen && (
