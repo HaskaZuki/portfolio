@@ -147,19 +147,6 @@ All-in-one bot with moderation, music player (DisTube), reaction roles, and admi
 
 This project is **unlicensed** - all rights reserved by Haska.
 
-## 👤 Author
-
-**Haska (HaskaZuki)**
-- GitHub: [@HaskaZuki](https://github.com/HaskaZuki)
-- Discord: `710245394533318676`
-- Email: haskabussiness@gmail.com
-
-## 🙏 Acknowledgments
-
-- Built with React and modern web technologies
-- Icons by Lucide React
-- Deployed on GitHub Pages
-
 ---
 
 **Live Demo**: [https://HaskaZuki.github.io/portfolio](https://HaskaZuki.github.io/portfolio)
