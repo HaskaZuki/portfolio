@@ -3,8 +3,8 @@ logs
 *.log
 
 # Build files generated from Parcel
-# dist  # Uncommented for GitHub Pages deployment
-
+dist
+docs
 # Dependency directories
 node_modules/
 

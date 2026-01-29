@@ -6,10 +6,10 @@
   "homepage": "https://github.com/HaskaZuki/portfolio",
   "scripts": {
     "start": "parcel",
-    "build": "parcel build --dist-dir docs",
-    "build-gh": "parcel build --dist-dir docs --public-url /portofolio/",
+    "build": "parcel build",
+    "build-gh": "parcel build --public-url /portofolio/",
     "predeploy": "npm run build-gh",
-    "deploy": "gh-pages -d docs"
+    "deploy": "gh-pages -d dist"
   },
   "repository": {
     "type": "git",
