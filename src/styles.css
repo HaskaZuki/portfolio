@@ -1180,9 +1180,6 @@ tr:hover td { background: var(--bg-subtle); color: var(--text-main); }
     font-size: 1.75rem !important;
   }
   
-  .lang-trigger span {
-  }
-  
   .lang-trigger {
     min-width: auto !important;
     padding: 0.5rem 0.75rem !important;
