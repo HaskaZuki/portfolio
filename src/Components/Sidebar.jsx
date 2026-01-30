@@ -62,25 +62,18 @@ const Sidebar = ({ language = "en" }) => {
               </Link>
             </li>
 
+
             
             <li>
-              <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
-                <Link 
-                  to="/docs" 
-                  className={`nav-item ${location.pathname.startsWith("/docs") ? "active" : ""}`}
-                  onClick={closeMobileMenu}
-                  style={{ 
-                    flex: 1,
-                    display: "flex",
-                    alignItems: "center",
-                    gap: "0.5rem"
-                  }}
-                >
-                  <Icons.Book /> <span>{t(language, "documentation")}</span>
-                </Link>
-                
+              <Link 
+                to="/docs" 
+                className={`nav-item ${location.pathname.startsWith("/docs") ? "active" : ""}`}
+                onClick={closeMobileMenu}
+              >
+                <Icons.Book /> <span>{t(language, "documentation")}</span>
                 <button
                   onClick={(e) => {
+                    e.preventDefault();
                     e.stopPropagation();
                     setIsDocsOpen(!isDocsOpen);
                   }}
@@ -94,6 +87,7 @@ const Sidebar = ({ language = "en" }) => {
                     padding: "0.5rem",
                     display: "flex",
                     alignItems: "center",
+                    marginLeft: "auto",
                     transition: "transform 0.2s"
                   }}
                 >
@@ -102,7 +96,7 @@ const Sidebar = ({ language = "en" }) => {
                     transition: "transform 0.2s"
                   }} />
                 </button>
-              </div>
+              </Link>
 
               {isDocsOpen && (
                 <ul className="submenu">

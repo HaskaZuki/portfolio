@@ -261,15 +261,19 @@ body {
 .nav-list { list-style: none; display: flex; flex-direction: column; gap: 0; /* No gap for boxy list */ }
 
 .nav-item {
-  display: flex; align-items: center; gap: 1rem;
+  display: flex; 
+  align-items: center; 
+  gap: 1rem;
   padding: 1rem 1.2rem;
   color: var(--text-muted);
-  border-radius: var(--radius-sm); /* Boxy */
+  border-radius: 0; 
   text-decoration: none;
   transition: all 0.2s;
   font-weight: 500;
   cursor: pointer;
   border-left: 3px solid transparent;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .nav-item:hover, .nav-item.active {
@@ -294,7 +298,9 @@ body {
   font-size: 0.85rem;
   text-decoration: none;
   transition: all 0.2s;
-  border-radius: var(--radius-sm);
+  border-radius: 0;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .submenu-item:hover { color: var(--text-main); background: rgba(0,0,0,0.05); }

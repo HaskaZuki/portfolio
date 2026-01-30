@@ -24,7 +24,7 @@ const App = () => {
     const tenMinutes = 10 * 60 * 1000; 
     const timeDiff = now - parseInt(lastVisit);
     
-    return timeDiff > tenMinutes; // Show if more than 10 minutes passed
+    return timeDiff > tenMinutes; 
   };
 
   const [showWelcome, setShowWelcome] = useState(checkShouldShowWelcome());
