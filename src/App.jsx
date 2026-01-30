@@ -18,10 +18,10 @@ import "./styles.css";
 const App = () => {
   const checkShouldShowWelcome = () => {
     const lastVisit = localStorage.getItem('lastVisitTime');
-    if (!lastVisit) return true; // First visit
+    if (!lastVisit) return true; 
     
     const now = Date.now();
-    const tenMinutes = 10 * 60 * 1000; // 10 minutes in milliseconds
+    const tenMinutes = 10 * 60 * 1000; 
     const timeDiff = now - parseInt(lastVisit);
     
     return timeDiff > tenMinutes; // Show if more than 10 minutes passed
