@@ -4,9 +4,8 @@ import { SlideUp, StaggerContainer, StaggerItem } from "../components/AnimatedSe
 import TiltCard from "../components/TiltCard";
 import Testimonials from "../components/Testimonials";
 
-// Cache configuration
 const CACHE_KEY = 'github_projects_cache';
-const CACHE_DURATION = 5 * 60 * 1000; // 5 minutes
+const CACHE_DURATION = 5 * 60 * 1000;
 
 const Projects = () => {
   const [filter, setFilter] = useState('all');
@@ -15,7 +14,6 @@ const Projects = () => {
   const [error, setError] = useState(null);
   const username = 'HaskaZuki';
 
-  // Language to category mapping
   const getCategoryFromLanguage = (language, topics = []) => {
     const topicMap = {
       'discord-bot': 'discord',
@@ -77,7 +75,6 @@ const Projects = () => {
     setLoading(true);
     setError(null);
 
-    // Check cache first
     const cached = getCache();
     if (cached) {
       setRepositories(cached);
@@ -96,7 +93,6 @@ const Projects = () => {
 
       const data = await response.json();
 
-      // Filter out forks and transform data
       const transformedRepos = data
         .filter(repo => !repo.fork)
         .map(repo => ({
@@ -119,7 +115,6 @@ const Projects = () => {
       console.error('Error fetching repositories:', err);
       setError(err.message);
       
-      // Fallback to empty state
       setRepositories([]);
     } finally {
       setLoading(false);

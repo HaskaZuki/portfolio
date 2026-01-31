@@ -7,7 +7,6 @@ const container = document.getElementById("app");
 const root = createRoot(container);
 root.render(<App />);
 
-// Register Service Worker for PWA
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
     navigator.serviceWorker

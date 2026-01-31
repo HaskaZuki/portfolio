@@ -125,7 +125,6 @@ const DocsMulti = () => (
           <strong style={{ color: "#fff", fontSize: "1.1rem", display: "block", marginBottom: "0.8rem" }}>1. Install & Connect</strong>
           <div className="code-block" style={{ background: "rgba(0,0,0,0.3)", padding: "1.2rem", borderRadius: "8px", fontFamily: "var(--font-mono)", fontSize: "0.95rem" }}>
             <span style={{color: "#7ee787"}}>npm install mongoose</span><br/><br/>
-            <span style={{color: "#555"}}>// In src/index.js (before login)</span><br/>
             <span style={{color: "#ff79c6"}}>const</span> mongoose = <span style={{color: "#8be9fd"}}>require</span>('mongoose');<br/>
             mongoose.connect(process.env.MONGO_URI)...
           </div>

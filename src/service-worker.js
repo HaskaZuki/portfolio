@@ -7,7 +7,6 @@ const STATIC_ASSETS = [
   '/manifest.json'
 ];
 
-// Install event - cache static assets
 self.addEventListener('install', (event) => {
   event.waitUntil(
     caches.open(CACHE_NAME).then((cache) => {
@@ -18,7 +17,6 @@ self.addEventListener('install', (event) => {
   );
 });
 
-// Activate event - clean up old caches
 self.addEventListener('activate', (event) => {
   event.waitUntil(
     caches.keys().then((cacheNames) => {
@@ -33,43 +31,33 @@ self.addEventListener('activate', (event) => {
   );
 });
 
-// Fetch event - serve from cache or network
 self.addEventListener('fetch', (event) => {
-  // Skip non-GET requests
   if (event.request.method !== 'GET') {
     return;
   }
 
-  // Skip cross-origin requests
   if (!event.request.url.startsWith(self.location.origin)) {
     return;
   }
 
   event.respondWith(
     caches.match(event.request).then((cached) => {
-      // Return cached version if available
       if (cached) {
-        // Fetch new version in background
         fetch(event.request).then((response) => {
           if (response && response.status === 200) {
             caches.open(CACHE_NAME).then((cache) => {
               cache.put(event.request, response.clone());
             });
           }
-        }).catch(() => {
-          // Network failed, but we have cached version
-        });
+        }).catch(() => {});
         return cached;
       }
 
-      // Not in cache, fetch from network
       return fetch(event.request).then((response) => {
-        // Don't cache non-successful responses
         if (!response || response.status !== 200) {
           return response;
         }
 
-        // Clone and cache the response
         const responseToCache = response.clone();
         caches.open(CACHE_NAME).then((cache) => {
           cache.put(event.request, responseToCache);
@@ -77,7 +65,6 @@ self.addEventListener('fetch', (event) => {
 
         return response;
       }).catch(() => {
-        // Network failed, return offline page for navigation requests
         if (event.request.mode === 'navigate') {
           return caches.match('/');
         }
@@ -90,17 +77,14 @@ self.addEventListener('fetch', (event) => {
   );
 });
 
-// Background sync for form submissions (if needed in future)
 self.addEventListener('sync', (event) => {
   if (event.tag === 'background-sync') {
     event.waitUntil(
-      // Handle background sync
       Promise.resolve()
     );
   }
 });
 
-// Push notifications (if needed in future)
 self.addEventListener('push', (event) => {
   if (event.data) {
     const data = event.data.json();
@@ -115,7 +99,6 @@ self.addEventListener('push', (event) => {
   }
 });
 
-// Notification click handler
 self.addEventListener('notificationclick', (event) => {
   event.notification.close();
   event.waitUntil(

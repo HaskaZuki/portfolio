@@ -2,9 +2,8 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 
-// Cache configuration
 const CACHE_KEY = 'github_stats_cache';
-const CACHE_DURATION = 5 * 60 * 1000; // 5 minutes
+const CACHE_DURATION = 5 * 60 * 1000;
 
 const GitHubStats = ({ username = 'HaskaZuki' }) => {
   const [stats, setStats] = useState(null);
@@ -12,7 +11,6 @@ const GitHubStats = ({ username = 'HaskaZuki' }) => {
   const [error, setError] = useState(null);
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.2 });
 
-  // Language color mapping
   const languageColors = {
     JavaScript: '#F7DF1E',
     TypeScript: '#3178C6',
@@ -68,7 +66,6 @@ const GitHubStats = ({ username = 'HaskaZuki' }) => {
     setLoading(true);
     setError(null);
 
-    // Check cache first
     const cached = getCache();
     if (cached) {
       setStats(cached);
@@ -77,14 +74,12 @@ const GitHubStats = ({ username = 'HaskaZuki' }) => {
     }
 
     try {
-      // Fetch user data
       const userResponse = await fetch(`https://api.github.com/users/${username}`);
       if (!userResponse.ok) {
         throw new Error(`GitHub API error: ${userResponse.status}`);
       }
       const userData = await userResponse.json();
 
-      // Fetch repositories
       const reposResponse = await fetch(
         `https://api.github.com/users/${username}/repos?per_page=100&sort=updated`
       );
@@ -93,11 +88,9 @@ const GitHubStats = ({ username = 'HaskaZuki' }) => {
       }
       const reposData = await reposResponse.json();
 
-      // Calculate statistics
       const totalStars = reposData.reduce((sum, repo) => sum + repo.stargazers_count, 0);
       const totalForks = reposData.reduce((sum, repo) => sum + repo.forks_count, 0);
 
-      // Calculate language statistics
       const languageStats = {};
       reposData.forEach((repo) => {
         if (repo.language) {
@@ -105,7 +98,6 @@ const GitHubStats = ({ username = 'HaskaZuki' }) => {
         }
       });
 
-      // Convert to percentage
       const totalLangRepos = Object.values(languageStats).reduce((a, b) => a + b, 0);
       const topLanguages = Object.entries(languageStats)
         .sort((a, b) => b[1] - a[1])
@@ -116,7 +108,6 @@ const GitHubStats = ({ username = 'HaskaZuki' }) => {
           color: languageColors[name] || '#999999',
         }));
 
-      // Fetch recent events (limited public events)
       const eventsResponse = await fetch(
         `https://api.github.com/users/${username}/events/public?per_page=10`
       );
@@ -166,7 +157,6 @@ const GitHubStats = ({ username = 'HaskaZuki' }) => {
         });
       }
 
-      // If no activity, add placeholder
       if (recentActivity.length === 0) {
         recentActivity = [
           { type: 'commit', repo: 'Loading...', message: 'Recent activity unavailable', time: 'now' },
@@ -177,7 +167,7 @@ const GitHubStats = ({ username = 'HaskaZuki' }) => {
         repos: userData.public_repos,
         stars: totalStars,
         forks: totalForks,
-        contributions: userData.public_repos * 12 + totalStars, // Estimated contributions
+        contributions: userData.public_repos * 12 + totalStars,
         followers: userData.followers,
         following: userData.following,
         topLanguages,
@@ -194,7 +184,6 @@ const GitHubStats = ({ username = 'HaskaZuki' }) => {
       console.error('Error fetching GitHub stats:', err);
       setError(err.message);
       
-      // Fallback to mock data on error
       setStats({
         repos: 0,
         stars: 0,

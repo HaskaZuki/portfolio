@@ -21,7 +21,7 @@ const Welcome = ({ onEnter }) => {
   }, [bootStep]);
 
   useEffect(() => {
-    const timer1 = setTimeout(() => setBootStep(1), 500); // Start typing
+    const timer1 = setTimeout(() => setBootStep(1), 500);
     return () => clearTimeout(timer1);
   }, []);
 

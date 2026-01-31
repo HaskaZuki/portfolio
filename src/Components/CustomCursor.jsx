@@ -16,7 +16,6 @@ const CustomCursor = ({ theme = 'dark' }) => {
   const cursorYSpring = useSpring(cursorY, springConfig);
 
   useEffect(() => {
-    // Check if device has pointer (not touch)
     const hasPointer = window.matchMedia('(pointer: fine)').matches;
     if (!hasPointer) return;
 
@@ -61,7 +60,6 @@ const CustomCursor = ({ theme = 'dark' }) => {
     };
   }, [cursorX, cursorY]);
 
-  // Hide on touch devices
   if (typeof window !== 'undefined' && !window.matchMedia('(pointer: fine)').matches) {
     return null;
   }
@@ -70,7 +68,6 @@ const CustomCursor = ({ theme = 'dark' }) => {
 
   return (
     <>
-      {/* Main cursor ring */}
       <motion.div
         ref={cursorRef}
         className="custom-cursor"
@@ -113,7 +110,6 @@ const CustomCursor = ({ theme = 'dark' }) => {
         )}
       </motion.div>
 
-      {/* Cursor dot */}
       <motion.div
         ref={cursorDotRef}
         style={{
